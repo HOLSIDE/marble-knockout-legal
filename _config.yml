@@ -1,5 +1,11 @@
 # Public legal pages of Marble Knockout (privacy policy, terms, account deletion), published by
-# GitHub Pages from the root of this repo.
+# GitHub Pages from the root of this repo. Look: _layouts/default.html, same design tokens as the
+# app ("Vetro soffiato", mobile/styles/theme.ts in the app repo), light and dark.
 title: Marble Knockout
 description: Privacy policy, terms and account deletion
-theme: jekyll-theme-minimal
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+exclude: [README.md]

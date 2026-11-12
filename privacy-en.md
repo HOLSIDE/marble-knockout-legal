@@ -12,6 +12,7 @@ This policy explains what personal data the **Marble Knockout** app (Android, iO
 ## 1. Controller
 
 Holside — data controller: Davide Travaglini.
+
 Contact for any privacy request: **info@holside.it**
 
 ## 2. What data we process

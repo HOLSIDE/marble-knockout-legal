@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="{{ page.lang | default: 'it' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="icon" href="{{ '/assets/icon.png' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Same tokens as the app's "Vetro soffiato" design system (mobile/styles/theme.ts):
+       light = D1 "Cristallo" (pearl ground, frosted white glass), dark = D (graphite, blown glass) */
+    :root {
+      --ground: #F4F4F7; --surface: #FFFFFF; --surface2: #E8E8ED;
+      --chalk: #17171E; --chalk2: #45454F; --chalk3: #5B5B69;
+      --ring-faint: rgba(23, 23, 30, 0.10);
+      --violet: #5B3FD6; --violet-ink: #5B3FD6;
+      --glass-fill: rgba(255, 255, 255, 0.62); --glass-edge: rgba(255, 255, 255, 0.95);
+      --glow-a: rgba(140, 125, 220, 0.20); --glow-b: rgba(255, 140, 160, 0.14);
+      --shadow: 0 12px 40px rgba(40, 30, 90, 0.10);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ground: #121217; --surface: #1D1D24; --surface2: #292932;
+        --chalk: #F4F4F8; --chalk2: #D9D9E2; --chalk3: #B4B4C2;
+        --ring-faint: rgba(255, 255, 255, 0.13);
+        --violet: #6E5BF2; --violet-ink: #B3A6FF;
+        --glass-fill: rgba(255, 255, 255, 0.07); --glass-edge: rgba(255, 255, 255, 0.18);
+        --glow-a: rgba(130, 120, 210, 0.30); --glow-b: rgba(255, 130, 150, 0.16);
+        --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--chalk2); background: var(--ground);
+      font: 400 16px/1.6 'Outfit', system-ui, sans-serif;
+      /* light leaking through the glass, like the app's hero glows */
+      background-image:
+        radial-gradient(60rem 40rem at -10% -10%, var(--glow-a), transparent 60%),
+        radial-gradient(50rem 36rem at 110% 0%, var(--glow-b), transparent 60%);
+      background-attachment: fixed;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 56px; }
+    header.brand { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; text-decoration: none; }
+    header.brand img { width: 52px; height: 52px; border-radius: 14px; box-shadow: var(--shadow); }
+    .wordmark { font-size: 26px; line-height: 1.1; color: var(--chalk); font-weight: 300; letter-spacing: -0.01em; }
+    .wordmark b { font-weight: 700; }
+    .tagline { font: 500 11px/1.4 'DM Mono', monospace; letter-spacing: 0.22em; color: var(--chalk3); text-transform: uppercase; }
+    main {
+      background: var(--glass-fill); border: 1px solid var(--glass-edge); border-radius: 28px;
+      padding: 8px 28px 24px; box-shadow: var(--shadow);
+      -webkit-backdrop-filter: blur(24px) saturate(140%); backdrop-filter: blur(24px) saturate(140%);
+    }
+    h1 { font-size: 30px; line-height: 1.2; color: var(--chalk); font-weight: 700; margin: 24px 0 4px; letter-spacing: -0.01em; }
+    h1 + p { margin-top: 0; }
+    h2 {
+      font: 500 12px/1.4 'DM Mono', monospace; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--chalk3); margin: 32px 0 10px; padding-top: 20px; border-top: 1px solid var(--ring-faint);
+    }
+    p, li { color: var(--chalk2); }
+    strong { color: var(--chalk); font-weight: 600; }
+    em { color: var(--chalk3); font-style: normal; font-size: 14px; }
+    a { color: var(--violet-ink); font-weight: 600; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul, ol { padding-left: 1.2em; }
+    li { margin: 4px 0; }
+    hr { border: 0; border-top: 1px solid var(--ring-faint); margin: 32px 0; }
+    .table { overflow-x: auto; margin: 12px -4px; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 15px; }
+    th { text-align: left; font: 500 11px/1.4 'DM Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--chalk3); padding: 8px 10px; }
+    td { padding: 10px; vertical-align: top; border-top: 1px solid var(--ring-faint); }
+    td:first-child { color: var(--chalk); font-weight: 600; }
+    footer { margin-top: 24px; text-align: center; font: 400 12px/1.6 'DM Mono', monospace; color: var(--chalk3); }
+    footer a { font-weight: 500; }
+    @media (max-width: 520px) {
+      main { padding: 4px 18px 18px; border-radius: 22px; }
+      h1 { font-size: 25px; }
+      .wordmark { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="brand-link" href="{{ '/' | relative_url }}" style="text-decoration:none">
+      <header class="brand">
+        <img src="{{ '/assets/icon.png' | relative_url }}" alt="">
+        <div>
+          <div class="wordmark">Marble <b>Knockout</b></div>
+          <div class="tagline">Collect. Challenge. Trade.</div>
+        </div>
+      </header>
+    </a>
+    <main>
+      {{ content | replace: '<table>', '<div class="table"><table>' | replace: '</table>', '</table></div>' }}
+    </main>
+    <footer>
+      Holside · <a href="mailto:info@holside.it">info@holside.it</a><br>
+      <a href="{{ '/privacy.html' | relative_url }}">Privacy</a> ·
+      <a href="{{ '/terms.html' | relative_url }}">Termini</a> ·
+      <a href="{{ '/delete-account.html' | relative_url }}">Eliminare l'account</a>
+    </footer>
+  </div>
+</body>
+</html>

@@ -12,6 +12,7 @@ Questa informativa spiega quali dati personali tratta l'app **Marble Knockout** 
 ## 1. Titolare del trattamento
 
 Holside — titolare del trattamento: Davide Travaglini.
+
 Contatto per qualsiasi richiesta sulla privacy: **info@holside.it**
 
 ## 2. Quali dati trattiamo
